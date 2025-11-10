@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin — Access Logs</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Admin Dashboard</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="admin.html" class="active">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="stats">
+      <div class="stat-card">
+        <div class="stat-value" id="totalUsers">0</div>
+        <div class="stat-label">Total Accesses</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="uniqueUsers">0</div>
+        <div class="stat-label">Unique Users</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="accessToday">0</div>
+        <div class="stat-label">Today</div>
+      </div>
+    </section>
+
+    <section>
+      <canvas id="byDateChart" height="120"></canvas>
+    </section>
+
+    <section class="toolbar">
+      <input type="search" id="search" placeholder="Search name, email, phone, page..."/>
+      <button id="exportCsv" class="btn-primary">Export CSV</button>
+      <button id="exportJson" class="btn-ghost">Export JSON</button>
+    </section>
+
+    <section>
+      <table class="table" id="logsTable" aria-label="Access logs">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Access Time</th>
+            <th>Content</th>
+            <th>IP</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Designs Library • Admin</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

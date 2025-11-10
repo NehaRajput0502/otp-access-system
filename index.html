@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Designs Library — OTP Access</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/popup.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- intl-tel-input (optional) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.7.3/build/css/intlTelInput.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Premium Designs Library</h1>
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Unlock 200+ High‑Quality Embroidery & Quilting Patterns</h2>
+        <p>Access is gated. Verify your mobile via OTP to view and download the full library.</p>
+        <button id="accessBtn" class="btn-primary"
+  onclick="document.getElementById('registerModal').classList.remove('hidden');document.getElementById('registerModal').setAttribute('aria-hidden','false');">
+  Access Content
+</button>
+
+        <p class="privacy">By continuing you agree to our <a href="#" id="privacyLink">privacy notice</a>.</p>
+      </div>
+      <div class="hero-art"></div>
+    </section>
+
+    <section class="content-preview">
+      <h3>Preview</h3>
+      <div class="grid">
+        <!-- Placeholder cards -->
+        <div class="card locked">
+          <div class="thumb"></div>
+          <div class="meta">
+            <h4>Floral Saree Border #A101</h4>
+            <p>Size: 750×600 | Format: DST</p>
+          </div>
+        </div>
+        <div class="card locked">
+          <div class="thumb"></div>
+          <div class="meta">
+            <h4>Dupatta All‑over #D212</h4>
+            <p>Size: 1200×800 | Format: EMB</p>
+          </div>
+        </div>
+        <div class="card locked">
+          <div class="thumb"></div>
+          <div class="meta">
+            <h4>Quilt Pattern #Q318</h4>
+            <p>Size: 3000×2200 | Format: DXF</p>
+          </div>
+        </div>
+        <div class="card locked">
+          <div class="thumb"></div>
+          <div class="meta">
+            <h4>Perforation #P441</h4>
+            <p>Size: 500×500 | Format: SVG</p>
+          </div>
+        </div>
+      </div>
+      <div class="notice locked-note">Content locked — complete OTP to reveal.</div>
+    </section>
+  </main>
+
+  <!-- Registration Modal -->
+  <div id="registerModal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="regTitle">
+    <div class="modal-content">
+      <button class="modal-close" id="closeRegister" aria-label="Close">×</button>
+      <h3 id="regTitle">Access Content</h3>
+      <form id="registerForm" autocomplete="off" novalidate>
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your full name"/>
+          <span class="error" data-for="name"></span>
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="you@example.com"/>
+          <span class="error" data-for="email"></span>
+        </div>
+        <div class="form-field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" required placeholder="+91 98765 43210"/>
+          <span class="error" data-for="phone"></span>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn-primary" id="submitRegister">Send OTP</button>
+          <button type="button" class="btn-ghost" id="cancelRegister">Cancel</button>
+        </div>
+        <p class="fine-print">We’ll send a one‑time password to verify your number. Used only for access tracking.</p>
+      </form>
+      <div class="spinner" id="registerSpinner" hidden></div>
+    </div>
+  </div>
+
+  <!-- OTP Modal -->
+  <div id="otpModal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="otpTitle">
+    <div class="modal-content">
+      <button class="modal-close" id="closeOtp" aria-label="Close">×</button>
+      <h3 id="otpTitle">Verify OTP</h3>
+      <p class="otp-sent-msg">We’ve sent a 6‑digit code to <span id="otpPhoneLabel"></span>.</p>
+      <div class="otp-inputs" id="otpInputs" aria-label="Enter 6 digit code">
+        <input inputmode="numeric" maxlength="1"/>
+        <input inputmode="numeric" maxlength="1"/>
+        <input inputmode="numeric" maxlength="1"/>
+        <input inputmode="numeric" maxlength="1"/>
+        <input inputmode="numeric" maxlength="1"/>
+        <input inputmode="numeric" maxlength="1"/>
+      </div>
+      <span class="error" data-for="otp"></span>
+      <div class="actions">
+        <button id="verifyOtp" class="btn-primary">Verify</button>
+        <button id="editDetails" class="btn-ghost">Back</button>
+      </div>
+      <div class="resend-row">
+        <button id="resendOtp" class="btn-link" disabled>Resend OTP</button>
+        <span id="resendTimer">Resend in 60s</span>
+      </div>
+      <div class="spinner" id="otpSpinner" hidden></div>
+      <p class="demo-note">DEMO: OTP will also appear in console.</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Designs Library • All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.7.3/build/js/intlTelInput.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

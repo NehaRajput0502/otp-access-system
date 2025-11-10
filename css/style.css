@@ -1,0 +1,26 @@
+*{box-sizing:border-box}html,body{margin:0;padding:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#0f172a;background:#f8fafc}
+.container{width:min(1100px,92%);margin:0 auto}
+.site-header{background:#0b2559;color:#fff}.site-header .container{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.site-header nav a{color:#cfe0ff;margin-left:16px;text-decoration:none}.site-header nav a.active{color:#fff;font-weight:700}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;padding:36px 0}
+.hero-text h2{margin:0 0 12px}.privacy{opacity:.7}
+.hero-art{height:220px;border-radius:24px;background:linear-gradient(135deg,#01286B, #0273BF);filter:contrast(1.1) saturate(1.1)}
+.btn-primary{background:#0273BF;color:#fff;border:none;padding:12px 16px;border-radius:12px;font-weight:600;cursor:pointer;box-shadow:0 6px 16px rgba(2,115,191,.25)}
+.btn-ghost{background:transparent;border:1px solid #cbd5e1;color:#0f172a;padding:10px 14px;border-radius:12px;cursor:pointer}
+.btn-link{background:none;border:none;color:#0273BF;cursor:pointer}
+.content-preview{padding:20px 0 56px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;background:#fff}
+.card .thumb{height:140px;background:url('https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?q=80&w=1200&auto=format&fit=crop') center/cover;filter:blur(0)}
+.card.locked .thumb{filter:blur(8px) brightness(.7)}
+.card .meta{padding:12px}
+.notice{margin-top:12px;font-size:.95rem}
+.locked-note{color:#dc2626}
+.table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden}
+.table th,.table td{padding:10px 12px;border-bottom:1px solid #e2e8f0;text-align:left;font-size:.95rem}
+.table th{background:#f1f5f9}
+.stat-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:16px;display:flex;flex-direction:column;align-items:flex-start;margin:10px 10px 20px 0}
+.stats{display:flex;flex-wrap:wrap}
+.stat-value{font-size:28px;font-weight:700}
+.site-footer{border-top:1px solid #e2e8f0;margin-top:40px}.site-footer .container{padding:18px 0}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.hero-art{order:-1}}
